@@ -11,7 +11,7 @@ func take_damage(amount):
 		
 
 func _drop_coin():
-	var coin_scene = preload("res://Coin.tscn")
+	var coin_scene = preload("res://coin.tscn")
 	var coin = coin_scene.instantiate()
 	coin.global_position = global_position
 	coin.falling = true
