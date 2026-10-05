@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Egypt/Pillar.png" id="1_pillar"]
+
+[node name="LargePillar" type="Node2D"]
+scale = Vector2(5.78, 5.78)
+
+[node name="PillarSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -56)
+texture = ExtResource("1_pillar")

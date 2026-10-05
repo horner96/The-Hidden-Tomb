@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c452vuwk4rvjx"]
+
+[ext_resource type="PackedScene" uid="uid://dsnjl6ga8pfn8" path="res://level.tscn" id="1_level"]
+[ext_resource type="AudioStream" uid="uid://cg04x40w47nbm" path="res://audio/backround.mp3" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b8noe1u0eva1v" path="res://PauseMenu.tscn" id="3_pause"]
+
+[node name="Main" type="Node2D" unique_id=112593154]
+
+[node name="Level" parent="." unique_id=2143461214 instance=ExtResource("1_level")]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=766951779]
+stream = ExtResource("2_0xm2m")
+volume_db = -20.0
+autoplay = true
+
+[node name="PauseMenu" parent="." unique_id=162360429 instance=ExtResource("3_pause")]

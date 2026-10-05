@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://brrgb7shwi8yw"]
+
+[ext_resource type="Script" uid="uid://cjj88h0i3ygb3" path="res://IntroScreen.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://dvyvu7roum8xx" path="res://Assets/Cinzel.ttf" id="2"]
+
+[node name="IntroScreen" type="Control" unique_id=559216841]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2060781317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09, 0.06, 0.04, 1)
+
+[node name="Center" type="VBoxContainer" parent="." unique_id=663197803]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Story" type="Label" parent="Center" unique_id=1546468312]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.35, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 16
+text = "One day, deep in the Valley of the Kings, Archeologist Zach Flint falls through the sand and down a mysterious passage leading to THE HIDDEN TOMB.
+
+Countless treasures await. Danger lurks around every corner.
+
+Will he find treasure, or find his death?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="Center" unique_id=2115218569]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 20
+text = "Continue"

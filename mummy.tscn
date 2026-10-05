@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bnmi434r0atfo"]
+
+[ext_resource type="Script" uid="uid://d1658mmfvf0l4" path="res://mummy.gd" id="1_366lj"]
+[ext_resource type="Texture2D" uid="uid://vpelqgco0l1p" path="res://art/mummy-01.png" id="1_ubudb"]
+[ext_resource type="AudioStream" uid="uid://bwyuvql2ah40h" path="res://audio/mummysound.mp3" id="3_xe1t8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_366lj"]
+atlas = ExtResource("1_ubudb")
+region = Rect2(0, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe1t8"]
+atlas = ExtResource("1_ubudb")
+region = Rect2(48, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fgrm"]
+atlas = ExtResource("1_ubudb")
+region = Rect2(96, 192, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1c32b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_366lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe1t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fgrm")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxv8n"]
+radius = 10.63291
+height = 51.51219
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1c32b"]
+radius = 38.0
+height = 126.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7bust"]
+radius = 48.0
+height = 144.0
+
+[node name="mummy" type="CharacterBody2D" unique_id=578326136]
+script = ExtResource("1_366lj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=231898391]
+position = Vector2(55, 50)
+scale = Vector2(3.2916667, 2.5625)
+sprite_frames = SubResource("SpriteFrames_1c32b")
+animation = &"move"
+frame_progress = 0.7369867
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1506507394]
+position = Vector2(47, 64)
+scale = Vector2(3.2916667, 2.5625)
+shape = SubResource("CapsuleShape2D_wxv8n")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2031117275]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1278116476]
+position = Vector2(48, 67)
+shape = SubResource("CapsuleShape2D_1c32b")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1141889738]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=805217860]
+position = Vector2(51, 65)
+shape = SubResource("CapsuleShape2D_7bust")
+
+[node name="mummysound" type="AudioStreamPlayer2D" parent="." unique_id=582153642]
+stream = ExtResource("3_xe1t8")

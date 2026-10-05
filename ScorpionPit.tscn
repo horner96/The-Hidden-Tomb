@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dtudhsusmvw6a"]
+
+[ext_resource type="Texture2D" uid="uid://cn247j405id3" path="res://Enemies/spider & scorpion/scorpion1/walk/scorpion4.png" id="1_bn25b"]
+[ext_resource type="Texture2D" uid="uid://c7xpti283hurs" path="res://Enemies/spider & scorpion/scorpion1/walk/scorpion5.png" id="2_imlnv"]
+[ext_resource type="Texture2D" uid="uid://dkp2son0yciqn" path="res://Enemies/spider & scorpion/scorpion1/walk/scorpion6.png" id="3_ll6be"]
+[ext_resource type="Texture2D" uid="uid://uipldhub1rhi" path="res://Enemies/spider & scorpion/scorpion1/walk/scorpion7.png" id="4_wvfjg"]
+[ext_resource type="Texture2D" uid="uid://ct614kgndhugm" path="res://Enemies/spider & scorpion/scorpion1/walk/scorpion8.png" id="5_sw43j"]
+[ext_resource type="Script" uid="uid://c764alpnhrs8f" path="res://scorpion_1.gd" id="6_fhl00"]
+[ext_resource type="Script" uid="uid://prmoadwfuw6m" path="res://death_area.gd" id="7_18435"]
+[ext_resource type="Texture2D" uid="uid://c0dvfxmohnjyn" path="res://Enemies/spider & scorpion/spider2/walk/spider_walk1.png" id="7_nrw0a"]
+[ext_resource type="Texture2D" uid="uid://bxb3ntlgb22" path="res://Enemies/spider & scorpion/spider2/walk/spider_walk2.png" id="8_18435"]
+[ext_resource type="Texture2D" uid="uid://dc8bi0tbhweq6" path="res://Enemies/spider & scorpion/spider2/walk/spider_walk3.png" id="9_2dj4a"]
+[ext_resource type="Texture2D" uid="uid://k667y1y8gb82" path="res://Enemies/spider & scorpion/spider2/walk/spider_walk4.png" id="10_e66hu"]
+[ext_resource type="Texture2D" uid="uid://7w4ie5cfntcc" path="res://Enemies/spider & scorpion/spider2/walk/spider_walk5.png" id="11_5xtwr"]
+[ext_resource type="Script" uid="uid://cp6ythdktpxfs" path="res://spider_1.gd" id="12_xdmoh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql73s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bn25b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_imlnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ll6be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wvfjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sw43j")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0s4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_nrw0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_18435")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2dj4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e66hu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5xtwr")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql73s"]
+size = Vector2(261, 48.25)
+
+[node name="ScorpionPit" type="Node2D" unique_id=177229627]
+
+[node name="Scorpion1" type="AnimatedSprite2D" parent="." unique_id=1414725475]
+position = Vector2(228, 197)
+scale = Vector2(1.0145833, 0.74612504)
+sprite_frames = SubResource("SpriteFrames_ql73s")
+frame = 1
+frame_progress = 0.37244323
+script = ExtResource("6_fhl00")
+
+[node name="Scorpion2" type="AnimatedSprite2D" parent="." unique_id=740020443]
+position = Vector2(58.000015, 194)
+scale = Vector2(0.8145835, 0.85743743)
+sprite_frames = SubResource("SpriteFrames_ql73s")
+frame = 1
+frame_progress = 0.37244323
+script = ExtResource("6_fhl00")
+
+[node name="Scorpion3" type="AnimatedSprite2D" parent="." unique_id=1326695900]
+position = Vector2(196.99998, 165.00002)
+scale = Vector2(0.6, 0.453)
+sprite_frames = SubResource("SpriteFrames_ql73s")
+frame = 1
+frame_progress = 0.37244323
+script = ExtResource("6_fhl00")
+
+[node name="Spider1" type="AnimatedSprite2D" parent="." unique_id=87303371]
+position = Vector2(249, 192)
+scale = Vector2(0.9489584, 0.81831264)
+sprite_frames = SubResource("SpriteFrames_v0s4m")
+frame = 1
+frame_progress = 0.9354107
+script = ExtResource("12_xdmoh")
+
+[node name="Spider2" type="AnimatedSprite2D" parent="." unique_id=767921828]
+position = Vector2(98, 167)
+scale = Vector2(1.0395832, 1.0136249)
+sprite_frames = SubResource("SpriteFrames_v0s4m")
+frame = 1
+frame_progress = 0.9354107
+script = ExtResource("12_xdmoh")
+
+[node name="Spider3" type="AnimatedSprite2D" parent="." unique_id=1319707574]
+position = Vector2(152, 190)
+scale = Vector2(1.1999999, 1.0584998)
+sprite_frames = SubResource("SpriteFrames_v0s4m")
+frame = 1
+frame_progress = 0.9354107
+script = ExtResource("12_xdmoh")
+
+[node name="DeathArea" type="Area2D" parent="." unique_id=1065161634]
+position = Vector2(-4, -1)
+script = ExtResource("7_18435")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea" unique_id=1548497304]
+position = Vector2(159, 204.125)
+shape = SubResource("RectangleShape2D_ql73s")

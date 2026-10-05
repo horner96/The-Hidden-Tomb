@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Vase.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Egypt/Vase1.png" id="2"]
+[ext_resource type="PackedScene" path="res://CheeseSlice.tscn" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(28, 44)
+
+[node name="Vase1" type="Node2D"]
+script = ExtResource("1")
+drop_scene = ExtResource("3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1")

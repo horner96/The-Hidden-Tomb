@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://ccq1u1modsq52"]
+
+[ext_resource type="Texture2D" uid="uid://dwm4t0aa1otkf" path="res://art/bat.32x32.png" id="1_p2utt"]
+[ext_resource type="Script" uid="uid://bm0e3nylr3m8q" path="res://Enemies/bat.gd" id="1_vut0d"]
+[ext_resource type="AudioStream" uid="uid://byne8f2ydxuca" path="res://audio/wing-flaps.mp3" id="3_va2ne"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxv8n"]
+radius = 17.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb2o4"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(155, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vobq3"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(124, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tubu"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(93, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tecl"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(62, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp0fn"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulak1"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(0, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tofr1"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(162, 0, 27, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1c32b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb2o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vobq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tubu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tecl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp0fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulak1")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tofr1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxv8n"]
+radius = 111.516815
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1c32b"]
+radius = 22.36068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_va2ne"]
+radius = 33.01515
+
+[node name="Bat" type="CharacterBody2D" unique_id=41821970 groups=["enemies"]]
+script = ExtResource("1_vut0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=786288765]
+position = Vector2(1, 18)
+shape = SubResource("CapsuleShape2D_wxv8n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=911643761]
+position = Vector2(0.9999981, 19)
+scale = Vector2(1.8055556, 1.798387)
+sprite_frames = SubResource("SpriteFrames_1c32b")
+animation = &"fly"
+frame_progress = 0.6238805
+
+[node name="DetectionZone" type="Area2D" parent="." unique_id=1919399885]
+position = Vector2(11, 165)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionZone" unique_id=501141009]
+position = Vector2(-5, -2)
+shape = SubResource("CircleShape2D_wxv8n")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1693223357 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=461406244]
+position = Vector2(3, 20)
+shape = SubResource("CircleShape2D_1c32b")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=585316129 groups=["enemy_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1524845338]
+position = Vector2(2, 17)
+shape = SubResource("CircleShape2D_va2ne")
+
+[node name="BatSound" type="AudioStreamPlayer2D" parent="." unique_id=342296168]
+stream = ExtResource("3_va2ne")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1836197953]
+
+[connection signal="body_entered" from="DetectionZone" to="." method="_on_DetectionZone_body_entered"]
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

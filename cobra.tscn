@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://doqdxk7lcsoj8"]
+
+[ext_resource type="Script" uid="uid://b16rhwhxel35q" path="res://cobra.gd" id="1_d4h4a"]
+[ext_resource type="Texture2D" uid="uid://cpsiy5b8ua8j" path="res://art/king_cobra-red.png" id="1_qpvun"]
+[ext_resource type="AudioStream" uid="uid://ctwaoifrrmm4q" path="res://audio/hissing_cobra.mp3" id="3_s1mo7"]
+[ext_resource type="AudioStream" uid="uid://cx4gtxllthbh5" path="res://audio/snake_bite.mp3" id="4_balox"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4h4a"]
+atlas = ExtResource("1_qpvun")
+region = Rect2(0, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1mo7"]
+atlas = ExtResource("1_qpvun")
+region = Rect2(96, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_balox"]
+atlas = ExtResource("1_qpvun")
+region = Rect2(192, 288, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1c32b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4h4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1mo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_balox")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpvun"]
+size = Vector2(87, 56.8125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1c32b"]
+size = Vector2(99, 91.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km5ld"]
+size = Vector2(95, 60)
+
+[node name="cobra" type="CharacterBody2D" unique_id=1793027051]
+script = ExtResource("1_d4h4a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=867868271]
+position = Vector2(-2, -3)
+scale = Vector2(0.9791667, 1)
+sprite_frames = SubResource("SpriteFrames_1c32b")
+animation = &"move"
+frame_progress = 0.81430733
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749053025]
+position = Vector2(-3.5, 15.40625)
+shape = SubResource("RectangleShape2D_qpvun")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=471344786]
+position = Vector2(-3, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=187832517]
+position = Vector2(0.5, -12.25)
+shape = SubResource("RectangleShape2D_1c32b")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=309072157]
+position = Vector2(-3.5, 15.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1282926231]
+shape = SubResource("RectangleShape2D_km5ld")
+
+[node name="CobraSound" type="AudioStreamPlayer2D" parent="." unique_id=1390146773]
+stream = ExtResource("3_s1mo7")
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." unique_id=1154218905]
+stream = ExtResource("4_balox")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=218064912]
+
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]

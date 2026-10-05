@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Egypt/Torch.png" id="1_torch"]
+[ext_resource type="PackedScene" path="res://WarmLight.tscn" id="2_warm_light"]
+
+[node name="Torch" type="Node2D"]
+
+[node name="TorchSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("1_torch")
+
+[node name="WarmLight" parent="." instance=ExtResource("2_warm_light")]
+position = Vector2(0, -58)
+texture_scale = 1.3
